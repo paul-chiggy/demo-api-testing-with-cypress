@@ -18,7 +18,7 @@ Among the assertions you can see various types to API testing, like:
 
 ## How to run
 ### Pre-requisites
-- Node JS
+- Node JS (I use `24.6.0`)
 - Git
 - Browsers (like Chrome or Firefox) - if you would like to run it in the GUI mode
 - Docker - if you would like to run it in Docker
