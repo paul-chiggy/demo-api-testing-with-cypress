@@ -1,3 +1,5 @@
+import { responseTimeThreshold } from '../support/test-data';
+
 export class WeatherApiAsserter {
     constructor() {}
 
@@ -8,7 +10,7 @@ export class WeatherApiAsserter {
         // smoke
         expect(response.status).to.eq(401);
         // performance
-        expect(response).to.have.property("duration").lessThan(1000);
+        expect(response).to.have.property("duration").lessThan(responseTimeThreshold);
         // contract
         expect(response.body.message).to.be.a("string");
         // data
@@ -23,7 +25,7 @@ export class WeatherApiAsserter {
         // smoke
         expect(response.status).to.eq(400);
         // performance
-        expect(response).to.have.property("duration").lessThan(1000);
+        expect(response).to.have.property("duration").lessThan(responseTimeThreshold);
         // contract
         expect(response.body.message).to.be.a("string");
         // data
@@ -38,7 +40,7 @@ export class WeatherApiAsserter {
         // smoke
         expect(response.status).to.eq(404);
         // performance
-        expect(response).to.have.property("duration").lessThan(1000);
+        expect(response).to.have.property("duration").lessThan(responseTimeThreshold);
         // contract
         expect(response.body.message).to.be.a("string");
         // data
@@ -55,7 +57,7 @@ export class WeatherApiAsserter {
         // smoke
         expect(response.status).to.eq(200);
         // performance
-        expect(response).to.have.property("duration").lessThan(1000);
+        expect(response).to.have.property("duration").lessThan(responseTimeThreshold);
         // contract
         expect(response.body.id).to.be.a("number");
         // data

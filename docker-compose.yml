@@ -4,12 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: demo-api-testing-with-cypress
-    environment:
-      - CYPRESS_baseUrl=https://api.openweathermap.org/data/2.5/weather
     command: npm run cy:run
     volumes:
-      - ./cypress:/app/cypress
-      - ./cypress.config.ts:/app/cypress.config.ts
       - ./cypress/videos:/app/cypress/videos
       - ./cypress/screenshots:/app/cypress/screenshots
+    working_dir: /app

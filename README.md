@@ -4,7 +4,7 @@ Demo project with Cypress for API testing
 
 ## Intro
 
-This small NodeJS project show-cases a test automation implementation for testing of REST API's based on Cypress testing framework, using Typescript and  multy-layer architecture (like the Test layer, Business layer with Stepper and Asserter, and a Core layer with the Cypress framework itself).
+This small NodeJS project show-cases a test automation implementation for testing of REST API's based on Cypress testing framework, using Typescript and  multi-layer architecture (like the Test layer, Business layer with Stepper and Asserter, and a Core layer with the Cypress framework itself).
 
 ## Description
 

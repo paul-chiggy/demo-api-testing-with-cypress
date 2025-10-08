@@ -1,20 +1,23 @@
+FROM node:22-slim AS deps
+
+WORKDIR /app
+ENV CYPRESS_CACHE_FOLDER=/root/.cache/Cypress
+
+COPY package.json package-lock.json ./
+
+# Install all dependencies once so we can reuse this layer and cache the Cypress binary.
+RUN npm ci && npx cypress install --force
+
 FROM cypress/browsers:node-22.17.1-chrome-138.0.7204.157-1-ff-140.0.4-edge-138.0.3351.83-1
 
-# Set the working directory inside the container
 WORKDIR /app
+ENV CYPRESS_CACHE_FOLDER=/root/.cache/Cypress
 
-# Copy package files
-COPY package.json ./
-COPY package-lock.json ./
-
-# Install dependencies
-RUN npm install
-
-# Copy Cypress tests and configuration
-COPY cypress.config.ts ./
-COPY cypress.env.json ./
+COPY --from=deps /app/node_modules ./node_modules
+COPY --from=deps /root/.cache/Cypress /root/.cache/Cypress
+COPY package*.json ./
+COPY cypress.* ./
+COPY tsconfig.json ./tsconfig.json
 COPY cypress ./cypress
-COPY tsconfig.json ./
 
-# Define the command to run tests
-ENTRYPOINT ["npm", "run", "cy:run"]
+CMD ["npm","run","cy:run"]

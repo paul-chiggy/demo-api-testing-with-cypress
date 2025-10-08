@@ -1,3 +1,5 @@
+import { responseTimeThreshold } from '../support/test-data';
+
 export class TvMazeAsserter {
 
     constructor() {}
@@ -10,7 +12,7 @@ export class TvMazeAsserter {
         // smoke
         expect(response.status).to.eq(200);
         // performance
-        expect(response).to.have.property("duration").lessThan(1000);
+        expect(response).to.have.property("duration").lessThan(responseTimeThreshold);
         // contract
         expect(response.body).to.be.an("array");
         expect(response.body[0].show).to.be.an("object");
@@ -24,7 +26,7 @@ export class TvMazeAsserter {
         // smoke
         expect(response.status).to.eq(200);
         // performance
-        expect(response).to.have.property("duration").lessThan(1000);
+        expect(response).to.have.property("duration").lessThan(responseTimeThreshold);
         // contract
         expect(response.body).to.be.an("object");
         expect(response.body.url).to.be.a("string");

@@ -1,6 +1,7 @@
 const weatherApiBaseUrl = Cypress.env("weatherApiUrl");
 const weatherAppId = Cypress.env("weatherAppId");
 const tvMazeApiBaseUrl = Cypress.env("tvApiUrl");
+export const responseTimeThreshold = 5000;
 
 export const weatherApiErrorMessages = {
     400: "Nothing to geocode",
